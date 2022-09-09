@@ -4,12 +4,7 @@ import { RiContactsBook2Line } from 'react-icons/ri';
 import { Button } from 'components/ui/Button';
 import { theme } from 'stylesConfig/theme';
 import { useRedux } from 'hooks';
-import { getFilter } from 'store/contacts';
-import {
-  deleteContactAsync,
-  getContactsAsync,
-  getContacts,
-} from 'store/contacts';
+import { contactsOperations, contactsSelectors } from 'store/contacts';
 
 const FriendListStyled = styled.ul`
   list-style: none;
@@ -27,15 +22,15 @@ const FriendListItem = styled.li`
 
 export const FriendList = () => {
   const [selector, dispatch] = useRedux();
-  const contacts = selector(getContacts);
-  const filter = selector(getFilter);
+  const contacts = selector(contactsSelectors.getAllContacts);
+  const filter = selector(contactsSelectors.getFilter);
 
   useEffect(() => {
-    dispatch(getContactsAsync());
+    dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
 
   const deleteContactbyId = contactId => {
-    dispatch(deleteContactAsync(contactId));
+    dispatch(contactsOperations.deleteContact(contactId));
   };
 
   const getFilteredContacts = () => {

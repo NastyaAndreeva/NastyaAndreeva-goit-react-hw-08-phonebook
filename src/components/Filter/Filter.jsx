@@ -1,9 +1,10 @@
 import { useRedux } from 'hooks';
-import { changeFilter, getFilter } from 'store/contacts';
+import { changeFilter, contactsSelectors } from 'store/contacts';
 
 export const Filter = () => {
   const [selector, dispatch] = useRedux();
-  const filter = selector(getFilter);
+  const filter = selector(contactsSelectors.getFilter);
+
   const onChange = e => {
     return dispatch(changeFilter(e.currentTarget.value));
   };
