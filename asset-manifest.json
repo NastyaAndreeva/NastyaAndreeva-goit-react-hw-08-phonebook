@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/main.deb62adb.js",
+    "main.js": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/main.a96a28bb.js",
     "static/js/322.2e379dca.chunk.js": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/322.2e379dca.chunk.js",
     "static/js/32.83516bb7.chunk.js": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/32.83516bb7.chunk.js",
     "static/js/578.e13c6796.chunk.js": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/578.e13c6796.chunk.js",
     "static/js/70.6927d21a.chunk.js": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/70.6927d21a.chunk.js",
     "static/css/544.fb68114e.chunk.css": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/css/544.fb68114e.chunk.css",
     "index.html": "/NastyaAndreeva-goit-react-hw-08-phonebook/index.html",
-    "main.deb62adb.js.map": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/main.deb62adb.js.map",
+    "main.a96a28bb.js.map": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/main.a96a28bb.js.map",
     "322.2e379dca.chunk.js.map": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/322.2e379dca.chunk.js.map",
     "32.83516bb7.chunk.js.map": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/32.83516bb7.chunk.js.map",
     "578.e13c6796.chunk.js.map": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/js/578.e13c6796.chunk.js.map",
@@ -15,6 +15,6 @@
     "544.fb68114e.chunk.css.map": "/NastyaAndreeva-goit-react-hw-08-phonebook/static/css/544.fb68114e.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/main.deb62adb.js"
+    "static/js/main.a96a28bb.js"
   ]
 }
