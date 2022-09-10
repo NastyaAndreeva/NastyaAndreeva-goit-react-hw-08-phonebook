@@ -1,68 +1,71 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'store/auth';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import styled from 'styled-components';
+import * as Yup from 'yup';
+import { Box } from 'components/Box';
+import { Button } from 'components/ui/Button';
 
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+const Label = styled.label`
+  margin-bottom: 10px;
+`;
+
+const ContactErrorMessage = styled(ErrorMessage)`
+  color: ${({ theme }) => theme.colors.alert};
+  font-size: 10px;
+`;
+
+const Heading = styled.h1`
+  text-align: center;
+`;
 
 export default function Login() {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleChange = ({ target: { name, value } }) => {
-    switch (name) {
-      case 'email':
-        return setEmail(value);
-      case 'password':
-        return setPassword(value);
-      default:
-        return;
-    }
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(authOperations.logIn(values));
+    resetForm();
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(authOperations.logIn({ email, password }));
-    setEmail('');
-    setPassword('');
-  };
+  const validationSchema = Yup.object({
+    email: Yup.string().max(16).required('Please, enter your email.'),
+    password: Yup.string().min(7).required('Please, enter your password.'),
+  });
 
   return (
     <div>
-      <h1>Страница логина</h1>
+      <Heading>Login Page</Heading>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Почта
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label style={styles.label}>
-          Пароль
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
-
-        <button type="submit">Войти</button>
-      </form>
+      <Formik
+        initialValues={{
+          email: '',
+          password: '',
+        }}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
+        <Form autoComplete="off">
+          <Box
+            width="400px"
+            margin="0 auto"
+            display="flex"
+            flexDirection="column"
+            as="section"
+          >
+            <Label htmlFor="email">
+              Email
+              <Field type="text" name="email" />
+              <ContactErrorMessage name="email" component="p" />
+            </Label>
+            <Label htmlFor="password">
+              Password
+              <Field type="text" name="password" />
+              <ContactErrorMessage name="password" component="p" />
+            </Label>
+            <Button type="submit">Log in</Button>
+          </Box>
+        </Form>
+      </Formik>
     </div>
   );
 }
