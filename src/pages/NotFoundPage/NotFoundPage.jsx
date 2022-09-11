@@ -1,7 +1,7 @@
 import catImg from 'assets/404.jpg';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { Container } from 'Layout/common/Container';
+import { Container } from 'components/Container';
 
 export const Link = styled(NavLink)`
   font-size: 20px;

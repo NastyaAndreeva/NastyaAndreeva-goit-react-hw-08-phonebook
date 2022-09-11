@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Appbar } from './common/AppBar';
-import { Container } from './common/Container';
+import { Container } from 'components/Container';
 
 export const SharedLayout = () => {
   return (
