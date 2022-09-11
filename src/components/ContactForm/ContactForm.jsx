@@ -1,4 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 import { nanoid } from 'nanoid';
 import styled from 'styled-components';
 import * as Yup from 'yup';
@@ -7,6 +9,7 @@ import { Button } from 'components/ui/Button';
 import { toast } from 'react-toastify';
 import { useRedux } from 'hooks';
 import { contactsOperations, contactsSelectors } from 'store/contacts';
+import { useState } from 'react';
 
 const Label = styled.label`
   margin-bottom: 10px;
@@ -20,6 +23,7 @@ const ContactErrorMessage = styled(ErrorMessage)`
 export const ContactForm = () => {
   const [selector, dispatch] = useRedux();
   const contacts = selector(contactsSelectors.getAllContacts);
+  const [number, setNumber] = useState(null);
 
   const dataValidation = data =>
     contacts.find(
@@ -37,7 +41,7 @@ export const ContactForm = () => {
     const contact = {
       id: nanoid(),
       name: data.name,
-      number: data.number,
+      number,
     };
 
     dispatch(contactsOperations.addContact(contact));
@@ -46,18 +50,17 @@ export const ContactForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     onSubmit(values);
     resetForm();
+    setNumber('380');
   };
 
   const validationSchema = Yup.object({
     name: Yup.string().max(16).required('Please, enter your name.'),
-    number: Yup.number().positive().required('Please, enter your number.'),
   });
 
   return (
     <Formik
       initialValues={{
         name: '',
-        number: '',
       }}
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
@@ -75,10 +78,13 @@ export const ContactForm = () => {
             <Field type="text" name="name" />
             <ContactErrorMessage name="name" component="p" />
           </Label>
-          <Label htmlFor="number">
+          <Label htmlFor="test">
             Number
-            <Field type="tel" name="number" />
-            <ContactErrorMessage name="number" component="p" />
+            <PhoneInput
+              country={'ua'}
+              value={number}
+              onChange={phone => setNumber(phone)}
+            />
           </Label>
           <Button type="submit">Add contact</Button>
         </Box>

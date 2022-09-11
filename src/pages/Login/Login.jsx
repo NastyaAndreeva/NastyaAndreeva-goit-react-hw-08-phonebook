@@ -54,7 +54,7 @@ export default function Login() {
               </Label>
               <Label htmlFor="password">
                 Password
-                <FieldPassword type="text" name="password" />
+                <FieldPassword type="password" name="password" />
                 <ContactErrorMessage name="password" component="p" />
               </Label>
             </div>

@@ -1,7 +1,7 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { SharedLayout } from './mylayout';
+import { SharedLayout } from './layout';
 import PrivateRoute from 'hocs/PrivateRoute';
 import PublicRoute from 'hocs/PublicRoute';
 import { authOperations } from 'store/auth';
