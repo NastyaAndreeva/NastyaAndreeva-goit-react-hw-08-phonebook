@@ -15,9 +15,8 @@ import {
 
 const contacts = createReducer([], {
   [fetchContactsSuccess]: (_, { payload }) => payload,
-  [addContactSuccess]: (state, { payload }) => [...state, payload],
-  [deleteContactSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+  [addContactSuccess]: (_, { payload }) => payload,
+  [deleteContactSuccess]: (_, { payload }) => payload,
 });
 
 const loading = createReducer(false, {

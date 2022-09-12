@@ -25,31 +25,36 @@ const fetchContacts = () => async dispatch => {
 
 const addContact =
   ({ name, number }) =>
-  dispatch => {
+  async dispatch => {
     const contact = {
       name,
       number,
     };
 
     dispatch(addContactRequest());
-
-    postContact(contact)
-      .then(({ data }) => {
-        dispatch(addContactSuccess(data));
-        toast.success(`${data.name} was added`);
-      })
-      .catch(error => dispatch(addContactError(error.message)));
+    try {
+      const { data } = await postContact(contact);
+      toast.success(`${data.name} was added`);
+      const response = await getContacts();
+      dispatch(addContactSuccess(response.data));
+    } catch (error) {
+      dispatch(addContactError(error.message));
+      toast.error(error.message);
+    }
   };
 
-const deleteContact = contactId => dispatch => {
+const deleteContact = contactId => async dispatch => {
   dispatch(deleteContactRequest());
 
-  removeContact(contactId)
-    .then(() => {
-      dispatch(deleteContactSuccess(contactId));
-      toast.success('The contact was deleted');
-    })
-    .catch(error => dispatch(deleteContactError(error.message)));
+  try {
+    await removeContact(contactId);
+    toast.success('The contact was deleted');
+    const response = await getContacts();
+    dispatch(deleteContactSuccess(response.data));
+  } catch (error) {
+    dispatch(deleteContactError(error.message));
+    toast.error(error.message);
+  }
 };
 
 const contactOperations = {
