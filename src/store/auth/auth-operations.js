@@ -5,7 +5,7 @@ import {
   fetchCurrent,
   fetchLogin,
   fetchLogout,
-} from 'api/fetch';
+} from 'api/fetchUser';
 
 /*
  * POST @ /users/signup

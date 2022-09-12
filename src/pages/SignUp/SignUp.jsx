@@ -2,17 +2,8 @@ import { useDispatch } from 'react-redux';
 import { authOperations } from 'store/auth';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Box } from 'components/Box';
-import { Button } from 'components/ui/Button';
-import {
-  ContactErrorMessage,
-  FieldEmail,
-  FieldName,
-  FieldPassword,
-  FormStyled,
-  Heading,
-  Label,
-} from './SignUp.styled';
+import { SignUpForm } from 'components/auth/SignUpForm';
+import { Heading } from 'components/ui/Heading';
 
 export default function SignUp() {
   const dispatch = useDispatch();
@@ -41,34 +32,7 @@ export default function SignUp() {
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <FormStyled autoComplete="off">
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            as="section"
-          >
-            <div>
-              <Label htmlFor="name">
-                Name
-                <FieldName type="text" name="name" />
-                <ContactErrorMessage name="name" component="p" />
-              </Label>
-              <Label htmlFor="email">
-                Email
-                <FieldEmail type="text" name="email" />
-                <ContactErrorMessage name="email" component="p" />
-              </Label>
-              <Label htmlFor="password">
-                Password
-                <FieldPassword type="password" name="password" />
-                <ContactErrorMessage name="password" component="p" />
-              </Label>
-            </div>
-            <Button type="submit">Log in</Button>
-          </Box>
-        </FormStyled>
+        <SignUpForm />
       </Formik>
     </div>
   );

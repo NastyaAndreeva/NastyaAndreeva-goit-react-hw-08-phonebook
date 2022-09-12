@@ -1,9 +1,7 @@
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { FriendList } from 'components/FriendList';
 import { ContactForm } from 'components/ContactForm';
 import { Filter } from 'components/Filter';
-import { Box } from 'components/Box';
+import { Box } from 'components/ui/Box';
 import { useRedux } from 'hooks';
 import { useEffect } from 'react';
 import { contactsOperations, contactsSelectors } from 'store/contacts';
@@ -33,13 +31,8 @@ const ContactsPage = () => {
           Find contacts by name
           <Filter />
         </label>
-        {contacts.length !== 0 && (
-          <>
-            <FriendList />
-          </>
-        )}
+        {contacts.length !== 0 && <FriendList />}
       </Box>
-      <ToastContainer autoClose={3000} />
     </>
   );
 };

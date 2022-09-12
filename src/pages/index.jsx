@@ -1,6 +1,6 @@
-import { Box } from 'components/Box';
-import { Container } from 'components/Container';
-import { Link } from 'components/Link';
+import { Box } from 'components/ui/Box';
+import { Container } from 'components/ui/Container';
+import { Link } from 'components/ui/Link';
 import { useAuth } from 'hooks';
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
         <h1>Welcome to the website</h1>
         {isLoggedIn ? (
           <p>
-            {user.name}, you can view
+            {user?.name}, you can view
             <Link to="/contacts">the contacts page</Link>
           </p>
         ) : (

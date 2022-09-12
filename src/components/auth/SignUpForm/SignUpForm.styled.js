@@ -9,7 +9,7 @@ export const Label = styled.label`
 `;
 
 export const ContactErrorMessage = styled(ErrorMessage)`
-  color: ${({ theme }) => theme.colors.alert};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 10px;
 `;
 

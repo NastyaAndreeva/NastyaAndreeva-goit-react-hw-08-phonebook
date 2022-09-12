@@ -1,4 +1,5 @@
-import { getContacts, postContact, removeContact } from 'api/fetch';
+import { getContacts, postContact, removeContact } from 'api/fetchContact';
+import { toast } from 'react-toastify';
 import {
   fetchContactsRequest,
   fetchContactsSuccess,
@@ -33,7 +34,10 @@ const addContact =
     dispatch(addContactRequest());
 
     postContact(contact)
-      .then(({ data }) => dispatch(addContactSuccess(data)))
+      .then(({ data }) => {
+        dispatch(addContactSuccess(data));
+        toast.success(`${data.name} was added`);
+      })
       .catch(error => dispatch(addContactError(error.message)));
   };
 
@@ -41,7 +45,10 @@ const deleteContact = contactId => dispatch => {
   dispatch(deleteContactRequest());
 
   removeContact(contactId)
-    .then(() => dispatch(deleteContactSuccess(contactId)))
+    .then(() => {
+      dispatch(deleteContactSuccess(contactId));
+      toast.success('The contact was deleted');
+    })
     .catch(error => dispatch(deleteContactError(error.message)));
 };
 

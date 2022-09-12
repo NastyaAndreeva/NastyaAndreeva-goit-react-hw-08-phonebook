@@ -2,7 +2,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { nanoid } from 'nanoid';
 import styled from 'styled-components';
-import { Box } from 'components/Box';
+import { Box } from 'components/ui/Box';
 import { Button } from 'components/ui/Button';
 import { toast } from 'react-toastify';
 import { useRedux } from 'hooks';
@@ -20,9 +20,9 @@ export const ContactForm = () => {
   const formik = useFormik({
     initialValues: {
       name: '',
-      number: '380',
+      number: '+380',
     },
-    onSubmit: (values, { resetForm, setFieldValue }) => {
+    onSubmit: (values, { resetForm }) => {
       const isAlreadyAdded = dataValidation(values);
 
       if (isAlreadyAdded) {
@@ -63,6 +63,7 @@ export const ContactForm = () => {
             onChange={formik.handleChange}
             value={formik.values.name}
           />
+          {/* <ErrorMessageStyled name="name" /> */}
         </Label>
         <Label htmlFor="test">
           Number

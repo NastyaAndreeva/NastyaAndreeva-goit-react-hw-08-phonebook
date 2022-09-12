@@ -56,7 +56,6 @@ export const App = () => {
           />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
-        {/* <Route path="*" element={<div>Not found</div>} /> */}
       </Routes>
     </Suspense>
   );
