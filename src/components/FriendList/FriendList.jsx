@@ -9,11 +9,13 @@ import { contactsOperations, contactsSelectors } from 'store/contacts';
 const FriendListStyled = styled.ul`
   list-style: none;
   padding: 0;
+  width: 400px;
 `;
 
 const FriendListItem = styled.li`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 10px;
   span {
     margin: 5px;
@@ -45,9 +47,12 @@ export const FriendList = () => {
     <FriendListStyled>
       {getFilteredContacts().map(({ id, name, number }) => (
         <FriendListItem key={id}>
-          <RiContactsBook2Line fill={theme.colors.backgroundBlueBtn} />
-          <span>{name}: </span>
-          <span>{number}</span>
+          <div>
+            <RiContactsBook2Line fill={theme.colors.backgroundBlueBtn} />
+            <span>{name}: </span>
+            <span>{number}</span>
+          </div>
+
           <Button type="button" onClick={() => deleteContactbyId(id)}>
             Delete
           </Button>
