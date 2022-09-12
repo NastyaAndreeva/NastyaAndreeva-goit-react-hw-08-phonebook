@@ -6,7 +6,7 @@ import {
   FieldPassword,
   FormStyled,
   Label,
-} from './LoginForm.styled';
+} from './common/AuthForm.styled';
 
 export const LoginForm = () => (
   <FormStyled autoComplete="off">
