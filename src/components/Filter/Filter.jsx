@@ -1,5 +1,6 @@
 import { useRedux } from 'hooks';
 import { changeFilter, contactsSelectors } from 'store/contacts';
+import { Input } from 'components/ui/Input';
 
 export const Filter = () => {
   const [selector, dispatch] = useRedux();
@@ -8,5 +9,5 @@ export const Filter = () => {
   const onChange = e => {
     return dispatch(changeFilter(e.currentTarget.value));
   };
-  return <input type="text" name="filter" value={filter} onChange={onChange} />;
+  return <Input type="text" name="filter" value={filter} onChange={onChange} />;
 };

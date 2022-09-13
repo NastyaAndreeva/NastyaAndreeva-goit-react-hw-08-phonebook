@@ -9,7 +9,6 @@ import {
   addContactRequest,
   deleteContactError,
   deleteContactRequest,
-  deleteContactSuccess,
 } from './contactsAction';
 
 const fetchContacts = () => async dispatch => {
@@ -45,15 +44,15 @@ const addContact =
 
 const deleteContact = contactId => async dispatch => {
   dispatch(deleteContactRequest());
-
   try {
     await removeContact(contactId);
     toast.success('The contact was deleted');
-    const response = await getContacts();
-    dispatch(deleteContactSuccess(response.data));
   } catch (error) {
     dispatch(deleteContactError(error.message));
     toast.error(error.message);
+  } finally {
+    const { data } = await getContacts();
+    dispatch(fetchContactsSuccess(data));
   }
 };
 

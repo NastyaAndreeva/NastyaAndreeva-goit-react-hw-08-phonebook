@@ -5,6 +5,10 @@ import { Box } from 'components/ui/Box';
 import { useRedux } from 'hooks';
 import { useEffect } from 'react';
 import { contactsOperations, contactsSelectors } from 'store/contacts';
+import { Span } from 'components/ui/Span';
+import { Label } from 'components/ui/Label';
+import { Heading } from 'components/ui/Heading';
+import { SecondaryHeading } from 'components/ui/SecondaryHeading';
 
 const ContactsPage = () => {
   const [selector, dispatch] = useRedux();
@@ -17,20 +21,19 @@ const ContactsPage = () => {
   return (
     <>
       <Box
-        width="400px"
+        width="480px"
         margin="0 auto"
         display="flex"
         flexDirection="column"
         as="section"
       >
-        <h1>Phonebook</h1>
+        <Heading>Phonebook</Heading>
         <ContactForm />
-
-        <h2>Contacts</h2>
-        <label htmlFor="filter">
-          Find contacts by name
+        <SecondaryHeading>Contacts</SecondaryHeading>
+        <Label htmlFor="filter">
+          <Span>Find contacts by name</Span>
           <Filter />
-        </label>
+        </Label>
         {contacts.length !== 0 && <FriendList />}
       </Box>
     </>

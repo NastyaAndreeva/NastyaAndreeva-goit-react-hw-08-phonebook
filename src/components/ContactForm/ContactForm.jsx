@@ -1,16 +1,18 @@
-import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { nanoid } from 'nanoid';
 import styled from 'styled-components';
 import { Box } from 'components/ui/Box';
-import { Button } from 'components/ui/Button';
 import { toast } from 'react-toastify';
 import { useRedux } from 'hooks';
 import { contactsOperations, contactsSelectors } from 'store/contacts';
 import { useFormik } from 'formik';
+import { Input, PhoneInputStyled } from 'components/ui/Input';
+import { Span } from 'components/ui/Span';
+import { Label } from 'components/ui/Label';
+import { AddButton } from 'components/ui/AddButton';
 
-const Label = styled.label`
-  margin-bottom: 10px;
+const FormStyled = styled.form`
+  margin-bottom: 30px;
 `;
 
 export const ContactForm = () => {
@@ -47,27 +49,26 @@ export const ContactForm = () => {
     );
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <FormStyled onSubmit={formik.handleSubmit}>
       <Box
-        width="400px"
+        width="480px"
         margin="0 auto"
         display="flex"
         flexDirection="column"
         as="section"
       >
         <Label htmlFor="name">
-          Name
-          <input
+          <Span>Name</Span>
+          <Input
             name="name"
             type="text"
             onChange={formik.handleChange}
             value={formik.values.name}
           />
-          {/* <ErrorMessageStyled name="name" /> */}
         </Label>
         <Label htmlFor="test">
-          Number
-          <PhoneInput
+          <Span>Number</Span>
+          <PhoneInputStyled
             country={'ua'}
             formik={formik}
             onChange={e => formik.setFieldValue('number', e)}
@@ -75,8 +76,8 @@ export const ContactForm = () => {
             value={formik.values.number}
           />
         </Label>
-        <Button type="submit">Add contact</Button>
+        <AddButton type="submit">Add contact</AddButton>
       </Box>
-    </form>
+    </FormStyled>
   );
 };

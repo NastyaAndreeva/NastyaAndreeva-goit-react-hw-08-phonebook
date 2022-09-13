@@ -9,14 +9,12 @@ import {
   addContactRequest,
   deleteContactError,
   deleteContactRequest,
-  deleteContactSuccess,
   changeFilter,
 } from './contactsAction';
 
 const contacts = createReducer([], {
   [fetchContactsSuccess]: (_, { payload }) => payload,
   [addContactSuccess]: (_, { payload }) => payload,
-  [deleteContactSuccess]: (_, { payload }) => payload,
 });
 
 const loading = createReducer(false, {
@@ -27,7 +25,6 @@ const loading = createReducer(false, {
   [addContactSuccess]: () => false,
   [addContactError]: () => false,
   [deleteContactRequest]: () => true,
-  [deleteContactSuccess]: () => false,
   [deleteContactError]: () => false,
 });
 

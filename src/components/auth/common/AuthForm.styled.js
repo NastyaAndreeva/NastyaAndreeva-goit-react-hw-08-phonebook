@@ -3,9 +3,13 @@ import styled from 'styled-components';
 
 export const Label = styled.label`
   margin-bottom: 10px;
-  display: block;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: white;
   font-weight: 600;
+  width: 300px;
 `;
 
 export const ContactErrorMessage = styled(ErrorMessage)`
@@ -25,17 +29,15 @@ export const FormStyled = styled(Form)`
   border-radius: 10px;
 `;
 
-export const FieldName = styled(Field)`
-  margin-left: 34px;
-  border-radius: 3px;
-`;
-
-export const FieldEmail = styled(Field)`
-  margin-left: 38px;
-  border-radius: 3px;
-`;
-
-export const FieldPassword = styled(Field)`
+export const FieldStyled = styled(Field)`
+  color: darkblue;
+  font-size: 16px;
   margin-left: 10px;
-  border-radius: 3px;
+  background: #ffffff;
+  border: 1px solid #cacaca;
+  border-radius: 5px;
+  line-height: 25px;
+  height: 35px;
+  width: 200px;
+  outline: none;
 `;

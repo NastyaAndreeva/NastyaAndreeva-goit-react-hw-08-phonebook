@@ -5,11 +5,12 @@ import { Button } from 'components/ui/Button';
 import { theme } from 'stylesConfig/theme';
 import { useRedux } from 'hooks';
 import { contactsOperations, contactsSelectors } from 'store/contacts';
+import { Span } from 'components/ui/Span';
 
 const FriendListStyled = styled.ul`
   list-style: none;
   padding: 0;
-  width: 400px;
+  width: 480px;
 `;
 
 const FriendListItem = styled.li`
@@ -49,8 +50,8 @@ export const FriendList = () => {
         <FriendListItem key={id}>
           <div>
             <RiContactsBook2Line fill={theme.colors.backgroundBlueBtn} />
-            <span>{name}: </span>
-            <span>{number}</span>
+            <Span>{name}: </Span>
+            <Span>{number}</Span>
           </div>
 
           <Button type="button" onClick={() => deleteContactbyId(id)}>

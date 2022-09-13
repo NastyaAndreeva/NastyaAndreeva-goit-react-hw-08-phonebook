@@ -2,8 +2,7 @@ import { Box } from 'components/ui/Box';
 import { Button } from 'components/ui/Button';
 import {
   ContactErrorMessage,
-  FieldEmail,
-  FieldPassword,
+  FieldStyled,
   FormStyled,
   Label,
 } from './common/AuthForm.styled';
@@ -20,12 +19,12 @@ export const LoginForm = () => (
       <div>
         <Label htmlFor="email">
           Email
-          <FieldEmail type="text" name="email" />
+          <FieldStyled type="text" name="email" />
           <ContactErrorMessage name="email" component="p" />
         </Label>
         <Label htmlFor="password">
           Password
-          <FieldPassword type="password" name="password" />
+          <FieldStyled type="password" name="password" />
           <ContactErrorMessage name="password" component="p" />
         </Label>
       </div>
